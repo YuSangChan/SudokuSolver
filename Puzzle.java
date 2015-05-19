@@ -65,7 +65,7 @@ public class Puzzle {
 
 	/* 
 		Put val into position x,y in tiles
-  */
+  	*/
 	public void put(int x, int y, int val) {
 		if (x >= rowLength || y >= colHeight) {
 			throw new IllegalArgumentException("Put failed : invalid tile");
@@ -77,7 +77,7 @@ public class Puzzle {
 
 	/* 
 		Return current value at the x,y position
-  */
+  	*/
 	public int get(int x, int y){
 		if (x >= rowLength || y >= colHeight) {
 			throw new IllegalArgumentException("Get failed : invalid tile");
@@ -90,7 +90,7 @@ public class Puzzle {
 		Searches the board for an entry that is still unassigned, returning a 
 		Coordinate representing the first such entry that is found. If no unassigned 
 		positions are found, returns null.
-  */
+  	*/
 	private Coordinate FindUnassignedPosition() {
 	    for (int row = 0; row < rowLength; row++) {
 	        for (int col = 0; col < colHeight; col++) {
@@ -102,7 +102,7 @@ public class Puzzle {
 	}
 
 	/* 
-	  Returns a boolean which indicates whether any assigned position in row is num
+	  	Returns a boolean which indicates whether any assigned position in row is num
 	*/
 	private boolean UsedInRow(int row, int num) {
 	    for (int col = 0; col < colHeight; col++) {
@@ -113,8 +113,8 @@ public class Puzzle {
 	}
 
 	/* 
-	  Returns a boolean which indicates whether any assigned position in col is num
-  */
+	  	Returns a boolean which indicates whether any assigned position in col is num
+  	*/
 	private boolean UsedInColumn(int col, int num) {
 	    for (int row = 0; row < rowLength; row++) {
 	        if (tiles[row][col] == num)
@@ -164,7 +164,7 @@ public class Puzzle {
 	/* 
 		Returns a boolean which indicates whether it will be legal to assign
    		num to the given row,col location. 
-  */
+  	*/
 	private boolean safeAssignment(int row, int col, int num) {
 	    return (!UsedInRow(row, num) && 
 	    		!UsedInColumn(col, num) && 
@@ -174,7 +174,7 @@ public class Puzzle {
 	/* 
 		Pretty-prints the puzzle as a grid with single space between 
 		each position.
-  */
+  	*/
 	@Override
 	public String toString() {
 		String board = "";
