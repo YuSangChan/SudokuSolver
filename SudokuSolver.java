@@ -4,7 +4,7 @@ public class SudokuSolver {
 
 	public static void main(String[] args) throws Exception {
 		if (args.length != 1) {
-			System.out.println("Usage : SudokuX <filepath>");
+			System.out.println("Usage : SudokuSolver <filepath>");
 			return;
 		}
 		
