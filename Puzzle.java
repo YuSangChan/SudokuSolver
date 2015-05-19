@@ -34,7 +34,7 @@ public class Puzzle {
 	*/
 	public boolean solve() {
 		Coordinate curr;
-	   	if ((curr = FindUnassignedPosition()) != null) {
+	   	if ((curr = findUnassignedPosition()) != null) {
 	   		int row = curr.xCoord;
 	   		int col = curr.yCoord;
 
@@ -78,7 +78,7 @@ public class Puzzle {
 	/* 
 		Return current value at the x,y position
   	*/
-	public int get(int x, int y){
+	public int get(int x, int y) {
 		if (x >= rowLength || y >= colHeight) {
 			throw new IllegalArgumentException("Get failed : invalid tile");
 		}
@@ -91,7 +91,7 @@ public class Puzzle {
 		Coordinate representing the first such entry that is found. If no unassigned 
 		positions are found, returns null.
   	*/
-	private Coordinate FindUnassignedPosition() {
+	private Coordinate findUnassignedPosition() {
 	    for (int row = 0; row < rowLength; row++) {
 	        for (int col = 0; col < colHeight; col++) {
 	            if (tiles[row][col] == 0)
@@ -104,7 +104,7 @@ public class Puzzle {
 	/* 
 	  	Returns a boolean which indicates whether any assigned position in row is num
 	*/
-	private boolean UsedInRow(int row, int num) {
+	private boolean usedInRow(int row, int num) {
 	    for (int col = 0; col < colHeight; col++) {
 	        if (tiles[row][col] == num)
 	            return true;
@@ -115,7 +115,7 @@ public class Puzzle {
 	/* 
 	  	Returns a boolean which indicates whether any assigned position in col is num
   	*/
-	private boolean UsedInColumn(int col, int num) {
+	private boolean usedInColumn(int col, int num) {
 	    for (int row = 0; row < rowLength; row++) {
 	        if (tiles[row][col] == num)
 	            return true;
@@ -127,7 +127,7 @@ public class Puzzle {
 		Returns a boolean which indicates whether any assigned position in the box 
 		whose upper left corner is boxStartRow,boxStartCol is num
 	*/
-	private boolean UsedInBox(int row, int col, int num) {
+	private boolean usedInBox(int row, int col, int num) {
 		int boxStartRow = upperLeftValue(row);
 		int boxStartCol = upperLeftValue(col);
 
@@ -166,9 +166,9 @@ public class Puzzle {
    		num to the given row,col location. 
   	*/
 	private boolean safeAssignment(int row, int col, int num) {
-	    return (!UsedInRow(row, num) && 
-	    		!UsedInColumn(col, num) && 
-	    		!UsedInBox(row, col, num));
+	    return (!usedInRow(row, num) && 
+	    		!usedInColumn(col, num) && 
+	    		!usedInBox(row, col, num));
 	}
 
 	/* 
